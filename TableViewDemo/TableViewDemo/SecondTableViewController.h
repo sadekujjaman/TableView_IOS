@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SecondTableViewController.h
 //  TableViewDemo
 //
 //  Created by Saiful Islam on 19/12/18.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface SecondTableViewController : UITableViewController
+@property(nonatomic)NSString *animalName;
 
 @end
-
