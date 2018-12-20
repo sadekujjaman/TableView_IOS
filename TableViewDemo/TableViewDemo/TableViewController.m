@@ -9,7 +9,17 @@
 #import "TableViewController.h"
 #import "SecondTableViewController.h"
 
+//rename to AnimalViewController
+//
 @interface TableViewController (){
+    
+    
+    //No need to create multiple arrays
+    //use NSDictionary
+    //Should not use
+    /*
+     */
+    NSDictionary *animalDictionary;
     NSArray *animals;
 }
 
@@ -20,8 +30,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    animals = [NSArray arrayWithObjects: @"Dogs", @"Cats", @"Frogs", @"Cows", @"Goats", nil];
+    //Use NSDictionary here
+    //Create this table from : NSArray *keys = dictionay.allkeys
+    animalDictionary = [NSDictionary dictionaryWithObjects:@[[NSArray arrayWithObjects:
+                                                              @"Dogs 1gahgagalkgaklgalghaghagajroijgrojgajgklagajglja", @"Dogs 2", @"Dogs 3", @"Dogs 4", @"Dogs 5", nil],
+                                                             [NSArray arrayWithObjects:@"Cat 1",
+                                                              @"Cat 2akgjalgjaljglajglajglajglkajglajgljalgjlgalgj", @"Cat 3", @"Cat 4", @"Cat 5", nil],
+                                                             [NSArray arrayWithObjects:@"Frogs 1", @"Frogs 2",
+                                                              @"Frogs 3agjagjalkjglakjglajgaljggaggaagjalgkjalgjajgajgjagjagjajg", @"Frogs 4", nil],
+                                                             [NSArray arrayWithObjects:@"Cow 1", @"Cow 2", @"Cow 3", nil],
+                                                             [NSArray arrayWithObjects:@"Goats1akgalgalkglaglaglagkakgaghakghagagagakgahg", @"Goats 2", @"Goats 3", @"Goats 4", nil]]
+                                                   forKeys:[NSArray arrayWithObjects: @"Dogs", @"Cats", @"Frogs", @"Cows", @"Goats", nil]];
+    animals = animalDictionary.allKeys;// [NSArray arrayWithObjects: @"Dogs", @"Cats", @"Frogs", @"Cows", @"Goats", nil];
    
 }
 
@@ -93,9 +113,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
    
     if([segue.identifier isEqualToString:@"ShowItems"]){
+        //send the Selected Value
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         SecondTableViewController *secondController = [segue destinationViewController];
-        secondController.animalName = [animals objectAtIndex:indexPath.row];
+        NSString *name = [animals objectAtIndex:indexPath.row];
+        secondController.animalName = name;
+        NSArray *animal = [animalDictionary objectForKey:name];
+        secondController.animalArray = animal;
         secondController.title = secondController.animalName;
     }
 }

@@ -10,29 +10,30 @@
 
 @interface SecondTableViewController ()
 {
-    NSArray *dogs;
-    NSArray *cats;
-    NSArray *frogs;
-    NSArray *cows;
-    NSArray *goats;
+    //animalArray
+//    NSArray *dogs;
+//    NSArray *cats;
+//    NSArray *frogs;
+//    NSArray *cows;
+//    NSArray *goats;
     
     
 }
 @end
-
+#warning //This class name should be DetailsViewController
 @implementation SecondTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    dogs = [NSArray arrayWithObjects:
-            @"Dogs 1gahgagalkgaklgalghaghagajroijgrojgajgklagajglja", @"Dogs 2", @"Dogs 3", @"Dogs 4", @"Dogs 5", nil];
-    cats = [NSArray arrayWithObjects:@"Cat 1",
-            @"Cat 2akgjalgjaljglajglajglajglkajglajgljalgjlgalgj", @"Cat 3", @"Cat 4", @"Cat 5", nil];
-    frogs = [NSArray arrayWithObjects:@"Frogs 1", @"Frogs 2",
-             @"Frogs 3agjagjalkjglakjglajgaljggaggaagjalgkjalgjajgajgjagjagjajg", @"Frogs 4", nil];
-    cows = [NSArray arrayWithObjects:@"Cow 1", @"Cow 2", @"Cow 3", nil];
-    goats = [NSArray arrayWithObjects:@"Goats1akgalgalkglaglaglagkakgaghakghagagagakgahg", @"Goats 2", @"Goats 3", @"Goats 4", nil];
+//    dogs = [NSArray arrayWithObjects:
+//            @"Dogs 1gahgagalkgaklgalghaghagajroijgrojgajgklagajglja", @"Dogs 2", @"Dogs 3", @"Dogs 4", @"Dogs 5", nil];
+//    cats = [NSArray arrayWithObjects:@"Cat 1",
+//            @"Cat 2akgjalgjaljglajglajglajglkajglajgljalgjlgalgj", @"Cat 3", @"Cat 4", @"Cat 5", nil];
+//    frogs = [NSArray arrayWithObjects:@"Frogs 1", @"Frogs 2",
+//             @"Frogs 3agjagjalkjglakjglajgaljggaggaagjalgkjalgjajgajgjagjagjajg", @"Frogs 4", nil];
+//    cows = [NSArray arrayWithObjects:@"Cow 1", @"Cow 2", @"Cow 3", nil];
+//    goats = [NSArray arrayWithObjects:@"Goats1akgalgalkglaglaglagkakgaghakghagagagakgahg", @"Goats 2", @"Goats 3", @"Goats 4", nil];
     
     
 }
@@ -56,19 +57,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //  Dogs", @"Cats", @"Frogs", @"Cows", @"Goats
-    if([_animalName isEqualToString:@"Dogs"]){
-        return [dogs count];
-    }else if([_animalName isEqualToString:@"Cats"]){
-        return [cats count];
-    }else if([_animalName isEqualToString:@"Frogs"]){
-        return [frogs count];
-    }else if([_animalName isEqualToString:@"Cows"]){
-        return [cows count];
-    }else if([_animalName isEqualToString:@"Goats"]){
-        return [goats count];
-    }
+//    if([_animalName isEqualToString:@"Dogs"]){
+//        return [dogs count];
+//    }else if([_animalName isEqualToString:@"Cats"]){
+//        return [cats count];
+//    }else if([_animalName isEqualToString:@"Frogs"]){
+//        return [frogs count];
+//    }else if([_animalName isEqualToString:@"Cows"]){
+//        return [cows count];
+//    }else if([_animalName isEqualToString:@"Goats"]){
+//        return [goats count];
+//    }
     
-    return 0;
+    return self.animalArray.count;
 }
 
 
@@ -77,17 +78,17 @@
     
     UITextView *label = [cell viewWithTag:12];
     
-    if([_animalName isEqualToString:@"Dogs"]){
-        [label setText:dogs[indexPath.row]];
-    }else if([_animalName isEqualToString:@"Cats"]){
-        [label setText:cats[indexPath.row]];
-    }else if([_animalName isEqualToString:@"Frogs"]){
-        [label setText:frogs[indexPath.row]];
-    }else if([_animalName isEqualToString:@"Cows"]){
-       [label setText:cows[indexPath.row]];
-    }else if([_animalName isEqualToString:@"Goats"]){
-        [label setText:goats[indexPath.row]];
-    }
+//    if([_animalName isEqualToString:@"Dogs"]){
+        [label setText:self.animalArray[indexPath.row]];
+//    }else if([_animalName isEqualToString:@"Cats"]){
+//        [label setText:cats[indexPath.row]];
+//    }else if([_animalName isEqualToString:@"Frogs"]){
+//        [label setText:frogs[indexPath.row]];
+//    }else if([_animalName isEqualToString:@"Cows"]){
+//       [label setText:cows[indexPath.row]];
+//    }else if([_animalName isEqualToString:@"Goats"]){
+//        [label setText:goats[indexPath.row]];
+//    }
 //    [label sizeToFit];
 //    [cell layoutIfNeeded];
     

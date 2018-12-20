@@ -10,5 +10,5 @@
 
 @interface SecondTableViewController : UITableViewController
 @property(nonatomic)NSString *animalName;
-
+@property(readwrite) NSArray *animalArray;
 @end
