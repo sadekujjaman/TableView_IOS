@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondTableViewController : UITableViewController
+@interface DetailsViewController : UITableViewController
 @property(nonatomic)NSString *animalName;
 @property(readwrite) NSArray *animalArray;
 @end

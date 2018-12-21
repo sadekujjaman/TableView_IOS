@@ -6,19 +6,14 @@
 //  Copyright © 2018 Saiful Islam. All rights reserved.
 //
 
-#import "TableViewController.h"
-#import "SecondTableViewController.h"
+#import "AnimalViewController.h"
+#import "DetailsViewController.h"
 
-//rename to AnimalViewController
-//
-@interface TableViewController (){
+
+@interface AnimalViewController (){
     
     
-    //No need to create multiple arrays
-    //use NSDictionary
-    //Should not use
-    /*
-     */
+    
     NSDictionary *animalDictionary;
     NSArray *animals;
 }
@@ -26,23 +21,21 @@
 
 @end
 
-@implementation TableViewController
+@implementation AnimalViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //Use NSDictionary here
-    //Create this table from : NSArray *keys = dictionay.allkeys
-    animalDictionary = [NSDictionary dictionaryWithObjects:@[[NSArray arrayWithObjects:
-                                                              @"Dogs 1gahgagalkgaklgalghaghagajroijgrojgajgklagajglja", @"Dogs 2", @"Dogs 3", @"Dogs 4", @"Dogs 5", nil],
-                                                             [NSArray arrayWithObjects:@"Cat 1",
-                                                              @"Cat 2akgjalgjaljglajglajglajglkajglajgljalgjlgalgj", @"Cat 3", @"Cat 4", @"Cat 5", nil],
-                                                             [NSArray arrayWithObjects:@"Frogs 1", @"Frogs 2",
-                                                              @"Frogs 3agjagjalkjglakjglajgaljggaggaagjalgkjalgjajgajgjagjagjajg", @"Frogs 4", nil],
-                                                             [NSArray arrayWithObjects:@"Cow 1", @"Cow 2", @"Cow 3", nil],
-                                                             [NSArray arrayWithObjects:@"Goats1akgalgalkglaglaglagkakgaghakghagagagakgahg", @"Goats 2", @"Goats 3", @"Goats 4", nil]]
-                                                   forKeys:[NSArray arrayWithObjects: @"Dogs", @"Cats", @"Frogs", @"Cows", @"Goats", nil]];
-    animals = animalDictionary.allKeys;// [NSArray arrayWithObjects: @"Dogs", @"Cats", @"Frogs", @"Cows", @"Goats", nil];
    
+    animalDictionary = [NSDictionary dictionaryWithObjects:@[
+                                                            [NSArray arrayWithObjects:@"Rocky", @"Oliver" , @"Jack", @"Luna",@"Lola", nil],
+                                                            [NSArray arrayWithObjects:@"Coco", @"Missiy", @"Charlie", @"Sasha", @"Lilly",  nil],
+                                                            [NSArray arrayWithObjects:@"Annabelle", @"Anna", @"Dorothy", @"Annie", @"Molly", nil],
+                                                            [NSArray arrayWithObjects:@"Lambert", @"Wooly",@"Bo Peep",@"Ramsey",@"Daisy",@"Snowball", nil]
+                                                            
+                                                            ] forKeys:[NSArray arrayWithObjects:@"Dogs", @"Cats", @"Cows", @"Goats", nil]];
+    
+    animals = animalDictionary.allKeys;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,6 +53,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     return [animals count];
+    
 }
 
 
@@ -68,7 +62,7 @@
     
     UILabel *label = [cell viewWithTag:11];
     [label setText:animals[indexPath.row]];
-    // Configure the cell...
+    [label setTextAlignment:NSTextAlignmentCenter];
     
     return cell;
 }
@@ -115,12 +109,13 @@
     if([segue.identifier isEqualToString:@"ShowItems"]){
         //send the Selected Value
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        SecondTableViewController *secondController = [segue destinationViewController];
+        DetailsViewController *secondController = [segue destinationViewController];
         NSString *name = [animals objectAtIndex:indexPath.row];
         secondController.animalName = name;
         NSArray *animal = [animalDictionary objectForKey:name];
         secondController.animalArray = animal;
-        secondController.title = secondController.animalName;
+        NSString *title = [NSString stringWithFormat:@"%@ %@ %@",@"Popular", secondController.animalName, @"Name"];
+        secondController.title = title;
     }
 }
 
